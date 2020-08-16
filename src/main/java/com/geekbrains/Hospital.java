@@ -9,5 +9,11 @@ public class Hospital
     {
         ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
 
+        Client client = context.getBean("Client",Client.class );
+        client.setName("Vladimir");
+        client.ask();
+        Receiption receiption = context.getBean("Receiption",Receiption.class );
+        Doctor doctor = context.getBean("Doctor",Doctor.class );
+        receiption.giveCard();
     }
 }
