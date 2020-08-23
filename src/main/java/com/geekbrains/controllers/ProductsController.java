@@ -1,6 +1,7 @@
 package com.geekbrains.controllers;
 
 import com.geekbrains.entites.Product;
+import com.geekbrains.entites.Products;
 import com.geekbrains.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,7 +16,7 @@ public class ProductsController {
 
 
     private ProductService productService;
-    private List<Product> products;
+
 
     @Autowired
     public void setProductService(ProductService productService) {
@@ -25,27 +26,21 @@ public class ProductsController {
     @RequestMapping("/showProduct")
     public String hello(Model uiModel, @ModelAttribute("product") Product product) {
 
+        Products products = productService.
 
-        System.out.println("**Show product**");
+        uiModel.addAttribute("products",products);
+
         return "products";
     }
 
-//
-    @RequestMapping(path = "/showProductById", method = RequestMethod.GET)
+    @GetMapping("/showProductById")
     @ResponseBody
     public Product showProductById(Model uiModel, @RequestParam Long id) {
         Product product = productService.getProductById(id);
         return product;
     }
 
-    @RequestMapping(path = "/showProductById/{pid}", method = RequestMethod.GET)
-    @ResponseBody
-    public Product showProductById(@PathVariable("pid") Long id) {
-        Product product = productService.getProductById(id);
-        return product;
-    }
-
-    @RequestMapping(path = "/setProductById", method = RequestMethod.POST)
+    @PostMapping ("/setProductById")
     public void setProduct(@RequestBody Product product) {
         System.out.println(product.getTitle() + " " + product.getCost());
     }

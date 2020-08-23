@@ -1,6 +1,7 @@
 package com.geekbrains.service;
 
 import com.geekbrains.entites.Product;
+import com.geekbrains.entites.Products;
 import com.geekbrains.repositories.ProductsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
