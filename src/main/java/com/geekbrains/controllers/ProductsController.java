@@ -26,7 +26,7 @@ public class ProductsController {
     @RequestMapping("/showProduct")
     public String hello(Model uiModel, @ModelAttribute("product") Product product) {
 
-        Products products = productService.
+        Products products = new Products();
 
         uiModel.addAttribute("products",products);
 
